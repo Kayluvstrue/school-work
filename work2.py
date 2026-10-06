@@ -2,15 +2,15 @@ board = [" ", " ", " ",
          " ", " ", " ",
          " ", " ", " "]
 
-current_player = "X"
+cplayer = "X"
 
 
 def update_board():
     print()
     print(board[0] + " | " + board[1] + " | " + board[2])
-    print("--+---+--")
+    print("---------")
     print(board[3] + " | " + board[4] + " | " + board[5])
-    print("--+---+--")
+    print("---------")
     print(board[6] + " | " + board[7] + " | " + board[8])
     print()
 
@@ -34,7 +34,7 @@ def player_turn():
         spot = get_valid_int()
 
         if board[spot] == " ":
-            board[spot] = current_player
+            board[spot] = cplayer
             break
         else:
             print("the spot is taken")
@@ -68,26 +68,26 @@ def tie():
 
 
 def switch_player():
-    global current_player
+    global cplayer
 
-    if current_player == "X":
-        current_player = "O"
+    if cplayer == "X":
+        cplayer = "O"
     else:
-        current_player = "X"
+        cplayer = "X"
 
 
 def game():
-    global current_player
+    global cplayer
 
     while True:
         update_board()
 
-        print("player " + current_player + "s turn")
+        print("player " + cplayer + " turn")
         player_turn()
 
         if check_win():
             update_board()
-            print("player " + current_player + " wins")
+            print("player " + cplayer + " wins")
             break
 
         if tie():
